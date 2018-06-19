@@ -55,9 +55,6 @@ class Nav extends Component {
       <div className={classes.root}>
         <AppBar position="static" className="nav">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
             <a href="/">
               <Typography variant="title" color="inherit" className={classes.flex}>
                 Property Management App

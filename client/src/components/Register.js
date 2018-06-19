@@ -3,10 +3,6 @@ import Login from './Login';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-// import { withStyles } from '@material-ui/core/styles';
-// import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import Typography from '@material-ui/core/Typography';
 // import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
@@ -32,17 +28,25 @@ class Register extends Component {
       password:'',
       title: 'Register'
     }
+
+    this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
+    this.handleChangeLastName = this.handleChangeLastName.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClick(event) {
     var apiBaseUrl = "http://localhost:8000/api";
-    console.log("values",
+    console.log("payload: ",
       this.state.first_name,
       this.state.last_name,
       this.state.email,
       this.state.password
     );
-    //To be done:check for empty values before hitting submit
+    //TODO: check for empty values before hitting submit
+
+    // Create payload to send over to backend
     var self = this;
     var payload={
       "first_name": this.state.first_name,
@@ -73,6 +77,31 @@ class Register extends Component {
    });
   }
 
+/* There's definitely a better way to do this */
+  handleChangeFirstName(event) {
+    this.setState({
+      first_name: event.target.value
+    })
+  }
+
+  handleChangeLastName(event) {
+    this.setState({
+      last_name: event.target.value
+    })
+  }
+
+  handleChangeEmail(event) {
+    this.setState({
+      email: event.target.value
+    })
+  }
+
+  handleChangePassword(event) {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -85,24 +114,24 @@ class Register extends Component {
             <br />
            <TextField
              label="First Name"
-             onChange = {(event, newValue) => this.setState({first_name:newValue})}
+             onChange={this.handleChangeFirstName}
              />
            <br/>
            <TextField
              label="Last Name"
-             onChange = {(event, newValue) => this.setState({last_name:newValue})}
+             onChange={this.handleChangeLastName}
              />
            <br/>
            <TextField
              type="email"
              label="Email"
-             onChange = {(event, newValue) => this.setState({email:newValue})}
+             onChange={this.handleChangeEmail}
              />
            <br/>
            <TextField
              type = "password"
              label="Password"
-             onChange = {(event, newValue) => this.setState({password:newValue})}
+             onChange={this.handleChangePassword}
              />
            <br/>
            <Button variant="contained" color="primary" label="Submit" style={style}

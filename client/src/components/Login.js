@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-// import { withStyles } from '@material-ui/core/styles';
-// import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import Typography from '@material-ui/core/Typography';
 // import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
@@ -22,6 +18,10 @@ constructor(props){
     password:'',
     title: "Login"
   }
+
+  this.handleChangeEmail = this.handleChangeEmail.bind(this);
+  this.handleChangePassword = this.handleChangePassword.bind(this);
+
  }
 
 // TODO: Implement Backend
@@ -32,18 +32,26 @@ handleClick(event) {
     "email":this.state.username,
     "password":this.state.password
   }
+  console.log("payload: ",
+    this.state.username,
+    this.state.password
+  );
+
+  /* Assuming /login is where we'll want to hit. Need to reconfigure with new backend */
   axios.post(apiBaseUrl+'login', payload)
   .then(function (response) {
     console.log(response);
     if(response.data.code === 200) {
       console.log("Login successful");
+
+      /* Need to confirm that this works */
       var profilePage=[];
       profilePage.push(<ProfilePage appContext={self.props.appContext}/>)
       self.props.appContext.setState({loginPage:[],profilePage:profilePage})
     }
     else if(response.data.code === 204){
-      console.log("Username password do not match");
-      alert("username password do not match")
+      console.log("Username and password do not match");
+      alert("Username and password do not match")
     }
     else{
       console.log("Username does not exists");
@@ -53,6 +61,18 @@ handleClick(event) {
   .catch(function (error) {
     console.log(error);
   });
+  }
+
+  handleChangeEmail(event) {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handleChangePassword(event) {
+    this.setState({
+      password: event.target.value
+    })
   }
 
 
@@ -70,13 +90,13 @@ render() {
             <br />
            <TextField
              label="Username"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
+             onChange={this.handleChangeEmail}
              />
            <br/>
              <TextField
                type="password"
                label="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
+               onChange={this.handleChangePassword}
                />
              <br/>
                <Button variant="contained" color="primary" label="Submit" style={style}

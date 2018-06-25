@@ -13,7 +13,7 @@ import Menu from '@material-ui/core/Menu';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 
-/* TODO: Have all other components inherit from This
+/* TODO: Have all other components inherit from this
 so we don't have to import all of this stuff everywhere.
 */
 class Root extends Component {

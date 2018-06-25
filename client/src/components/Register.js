@@ -37,7 +37,7 @@ class Register extends Component {
   }
 
   handleClick(event) {
-    var apiBaseUrl = "http://localhost:8000/api";
+    var apiBaseUrl = "http://localhost:8000/auth/signup";
     console.log("payload: ",
       this.state.first_name,
       this.state.last_name,

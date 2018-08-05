@@ -2,6 +2,9 @@
   "name": "Property-Management-S18",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "9.11.1"
+  },
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon app.js",
@@ -24,7 +27,6 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
-    "node": "9.11.1",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.38.0",

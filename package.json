@@ -20,8 +20,8 @@
   "homepage": "https://github.com/sfdevshop/Property-Management-S18#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
